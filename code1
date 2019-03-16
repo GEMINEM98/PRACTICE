@@ -1,0 +1,174 @@
+//二分查找
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+
+int BinarySearch(int arr[], int k, int left, int right)
+{
+	while (left <= right)
+	{
+		int mid = left + (right - left) / 2; // 防止数据越界
+		if (arr[mid] > k)
+		{
+			right = mid - 1;
+		}
+		else if (arr[mid] < k)
+		{
+			left = mid + 1;
+		}
+		else
+		{
+			return mid;
+		}
+	}
+	return - 1;
+}
+
+int main()
+{
+	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+	int k = 0;
+	int left = 0;
+	int right = sizeof(arr) / sizeof(arr[0]) - 1;
+	printf("请输入要查找的数据：");
+	scanf("%d", &k);
+	int temp = BinarySearch(arr, k, left, right);
+	if (temp == -1)
+	{
+		printf("未找到\n");
+	}
+	else
+	{
+		printf("找到了，下标是：%d\n", temp);
+	}
+	system("pause");
+	return 0;
+}
+
+//猜数字游戏
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+void menu()
+{
+	printf("--------------------------------\n");
+	printf("          * 1.play  *           \n");
+	printf("          * 0.exit  *           \n");
+	printf("--------------------------------\n");
+}
+
+void game()
+{
+	int random_num = rand() % 100 + 1;      // 定义1-100之间的随机数
+	int number = 0;
+	while (1)
+	{
+		printf("请输入猜的数字：");
+		scanf("%d", &number);
+		if (number > random_num)
+		{
+			printf("猜大了\n");
+		}
+		else if (number < random_num)
+		{
+			printf("猜小了\n");
+		}
+		else
+		{
+			printf("\n恭喜你，猜对了！\n");
+			break;
+		}
+	}
+}
+
+int main()
+{
+	int input = 0;
+	srand((unsigned)time(NULL));
+	do 
+	{
+		menu();
+		printf("请选择：");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			game();
+			break;
+		case 0:
+			printf("\n成功退出游戏！\n");
+			break;
+		default:
+			printf("选择错误，请重新输入！\n");
+			break;
+		}
+	} while (input);
+	system("pause");
+	return 0;
+}
+
+// n的阶乘
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+
+int Factorial(int n)
+{
+	int num = 1;
+	while (n > 0)
+	{
+		num *= n;
+		--n;
+	}
+	return num;
+}
+
+int main()
+{
+	int n = 0;
+	int temp = 0;
+	int flag = 1;
+	while (1 == flag)
+	{
+		printf("请输入数字：");
+		scanf("%d", &n);
+		temp = Factorial(n);
+		printf("阶乘是：%d\n", temp);
+		printf("\n是否继续输入？(1 or 0) ：");
+		scanf("%d", &flag);
+		if ((flag != 1) && (flag != 0))
+		{
+			printf("输入错误，程序结束！\n");
+			break;
+		}
+	}
+	system("pause");
+	return 0;
+}
+
+// 字符串中字符的动态移动
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<windows.h>
+#include<stdlib.h>
+int main()
+{
+	char arr1[] = "hello world";
+	char arr2[] = "###########";
+	int left = 0;
+	int right = sizeof(arr1) / sizeof(arr1[0]) - 2;   // sizeof计算包含'\0',所以是-2
+//	int right = strlen(arr1) - 1;     // 两种定义right的方式 
+	while (left <= right)
+	{
+		Sleep(1000);   // 1000ms
+		arr2[left] = arr1[left];
+		arr2[right] = arr1[right];
+		left++;
+		right--;
+		printf("%s\n", arr2);
+	}
+	system("pause");
+	return 0;
+}
