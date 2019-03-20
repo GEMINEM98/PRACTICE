@@ -1,0 +1,131 @@
+//N进制转化为十进制 
+#include"stdio.h"
+#include"string.h"
+#include"stdlib.h"
+int main()
+{
+	long int t1;
+	int i,n,t,len;
+	char a[20];
+	printf("请输入一个数: ");
+	gets(a);
+	strupr(a);
+	len=strlen(a);
+	t1=0;
+	printf("这个数的进制是（2/8/10/16）: ");
+	scanf("%d",&n);
+	for(i=0;i<len;i++)
+	{
+		if(a[i]>='0'&&a[i]<='9')
+		{
+			t=a[i]-'0';
+		}
+		else if(n>=11&&a[i]>='A'&&a[i]<='A'+n-10)
+		{
+			t=a[i]-'A'+10;
+		}
+		else
+		{
+			printf("输入错误！\n");
+			exit (0);
+		} 
+		t1=t1*n+t;
+	}
+	printf("这个数的十进制是: %d\n",t1);
+	return 0;
+}
+
+
+//十进制转化为N进制
+#include"stdio.h"
+int main()
+{
+	int r[100];
+	char arr[100];
+	int number,i,j,k;
+	int w=0,b;
+	int N;
+	printf("请输入一个数: ");
+	scanf("%d",&number);
+	printf("想要转换的进制是（2/8/10/16）: ");
+	scanf("%d",&N);
+	
+	if(N==2)
+	{
+		for(i=0; ;i++)
+		{
+			r[i]=number%N;
+			number=number/N;
+			if(number==0)
+			{
+				break;
+			}
+		}
+		printf("这个数的二进制是: ");
+		for(j=i;j>=0;j--)
+		{
+		    printf("%d",r[j]);
+		}
+	}
+	
+	else if(N==8)
+	{
+		for(i=0; ;i++)
+		{
+			r[i]=number%N;
+			number=number/N;
+			if(number==0||number==1)
+			{
+				break;
+			}
+		}
+		printf("这个数的八进制是: ");
+		for(j=i;j>=0;j--)
+		{
+		    printf("%d",r[j]);
+		}
+	}
+	
+	else if(N==10)
+	{
+		printf("%d",number);
+	} 
+	
+	else if(N==16)
+	{
+	    
+		if(number==0)
+		{
+			arr[0]=='0';
+		}
+		else
+		{
+			while(number)
+			{
+				b=number%16;
+				if(b<10)
+				{
+					arr[w]='0'+b;
+				}
+				else
+				{
+					arr[w]='A'+(b-10);
+				}
+				number=number/16;
+				if(number==0)
+				{
+					break;
+				}
+				w++;
+			}
+		}
+		printf("这个数的十六进制是: ");
+		for( ;w>=0;w--)
+		{
+			printf("%c", arr[w]);
+		}
+	}
+	return 0;
+}
+
+
