@@ -1,0 +1,131 @@
+//矩阵右上角
+#include<stdio.h>
+int main()
+{
+	int i,j,n;
+	int a[110][110];
+	printf("请输入矩阵的行(列)数：");
+	scanf("%d",&n); 
+	printf("请输入矩阵元素：");
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
+	}
+	printf("矩阵的右上角是：\n"); 
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(j>i||j==i)
+			{
+				printf("%d ",a[i][j]);
+				continue;
+			}
+			printf("  ");
+		}
+		printf("\n");
+	}
+	return 0;
+}
+
+// 矩阵右下角
+#include<stdio.h>
+int main()
+{
+	int i,j,n;
+	int a[110][110];
+	printf("请输入矩阵的行(列)数：");
+	scanf("%d",&n); 
+	printf("请输入矩阵元素：");
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
+	}
+	printf("矩阵的右下角是：\n");
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if((i+j)>(n-1)||(i+j)==(n-1))
+			{
+				printf("%d ",a[i][j]);
+				continue;
+			}
+			printf("  ");
+		}
+		printf("\n");
+	}
+	return 0;
+}
+
+//矩阵左上角
+#include<stdio.h>
+int main()
+{
+	int i,j,n;
+	int a[110][110];
+	printf("请输入矩阵的行(列)数：");
+	scanf("%d",&n); 
+	printf("请输入矩阵元素：");
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
+	}
+	printf("矩阵的左上角是：\n");
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if((i+j)<(n-1)||(i+j)==(n-1))
+			{
+				printf("%d ",a[i][j]);
+				continue;
+			}
+			printf("  ");
+		}
+		printf("\n");
+	}
+	return 0;
+}
+
+//矩阵左下角
+#include<stdio.h>
+int main()
+{
+	int i,j,n;
+	int a[110][110];
+	printf("请输入矩阵的行(列)数：");
+	scanf("%d",&n); 
+	printf("请输入矩阵元素：");
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
+	}
+	printf("矩阵的左下角是：\n");
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(i>j||i==j) 
+			{
+				printf("%d ",a[i][j]);
+				continue;
+			}
+			printf("  ");
+		}
+		printf("\n");
+	}
+	return 0;
+}
