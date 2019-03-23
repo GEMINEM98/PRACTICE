@@ -1,0 +1,27 @@
+//圆的周长和面积
+#include<stdio.h>
+#define pi 3.14
+int main()
+{
+	int r;
+	double c,s;
+	while(scanf("%d",&r)!=EOF)
+	{
+		c=2*pi*r;
+		s=pi*r*r;
+		printf("c=%lf,s=%lf\n",c,s);
+	}
+	return 0;
+}
+
+//三角形的面积
+#include<stdio.h>
+#include<math.h>
+int main(void)
+{
+	double a,b,c,p,area;
+	scanf("%lf %lf %lf",&a,&b,&c);
+	p=(a+b+c)/2;
+	area=sqrt(p*(p-a)*(p-b)*(p-c));
+	printf("area=%.2lf\n",area);
+}
