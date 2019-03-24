@@ -1,0 +1,276 @@
+// test.c
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include"game.h"
+
+void menu()
+{
+	printf("*******************************\n");
+	printf("*****        1.play       *****\n");
+	printf("*****        0.exit       *****\n");
+	printf("*******************************\n");
+}
+
+void game()
+{
+	char ret = 0;
+	char board[ROW][COL] = { 0 };
+	InitBoard(board, ROW, COL);
+	DisplayBoard(board, ROW, COL);
+	//下棋
+	while (1)
+	{
+		PlayerMove(board, ROW, COL);
+		DisplayBoard(board, ROW, COL);
+
+		ret = IsWin(board, ROW, COL);
+		if (ret != 'C') break;
+
+		ComputerMove(board, ROW, COL);
+		DisplayBoard(board, ROW, COL);
+
+		ret = IsWin(board, ROW, COL);
+		if (ret != 'C') break;
+
+	}
+	if ('*' == ret)
+	{
+		printf("玩家赢！\n");
+	}
+	else if ('#' == ret)
+	{
+		printf("电脑赢！\n");
+	}
+	else if ('Q' == ret)
+	{
+		printf("平局！\n");
+	}
+}
+
+void test()
+{
+	int input = 0;
+	srand((unsigned)time(NULL));
+	do
+	{
+		menu();
+		printf("请选择：");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			game();
+			break;
+		case 0:
+			printf("退出游戏！\n");
+			break;
+		default:
+			printf("输入错误，请重新输入：");
+			break;
+		}
+	} while (input);
+}
+
+int main()
+{
+	test();//测试三子棋
+	system("pause");
+	return 0;
+}
+
+
+
+// game.h
+
+#pragma once
+
+#define ROW 9
+#define COL 9
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+void InitBoard(char board[ROW][COL], int row, int col);
+void DisplayBoard(char board[ROW][COL], int row, int col);
+void PlayerMove(char board[ROW][COL], int row, int col);
+void ComputerMove(char board[ROW][COL], int row, int col);
+char IsWin(char board[ROW][COL], int row, int col);
+
+
+// game.c
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include"game.h"
+#include<string.h>
+
+void InitBoard(char board[ROW][COL], int row, int col)
+{
+	int i = 0;
+	int j = 0;
+	memset(board, ' ', row*col);
+}
+
+void DisplayBoard(char board[ROW][COL], int row, int col)
+{
+	int i = 0;
+	for (i = 0; i < row; ++i)
+	{
+		int j = 0;//一组
+		for (j = 0; j < col; ++j)
+		{
+			printf(" %c ", board[i][j]);
+			if (j < col - 1)
+			{
+				printf("|");
+			}
+		}
+		printf("\n");
+		if (i < row - 1)
+		{
+			for (j = 0; j < col; ++j)
+			{
+				printf("---");
+				if (j < col - 1)
+				{
+					printf("|");
+				}
+			}
+			printf("\n");
+		}
+	}
+}
+
+void PlayerMove(char board[ROW][COL], int row, int col)
+{
+	int x = 0;
+	int y = 0;
+	printf("玩家走：\n");
+	while (1)
+	{
+		printf("请输入坐标：");
+		scanf("%d%d", &x, &y);
+		if (x >= 1 && x <= row && y >= 1 && y <= col)
+		{
+			if (board[x - 1][y - 1] == ' ')
+			{
+				board[x - 1][y - 1] = '*';
+				break;
+			}
+			else
+			{
+				printf("坐标被占用！\n");
+			}
+		}
+		else
+		{
+			printf("坐标不存在，请重新输入：");
+		}
+	}
+}
+
+void ComputerMove(char board[ROW][COL], int row, int col)
+{
+	int x = 0;
+	int y = 0;
+	printf("电脑走\n");
+	while (1)
+	{
+		x = rand() % row;
+		y = rand() % col;
+		if (board[x][y] == ' ')
+		{
+			board[x][y] = '#';
+			break;
+		}
+	}
+}
+
+static IsFull(char board[ROW][COL], int row, int col)
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < row; ++i)
+	{
+		for (j = 0; j < col; ++j)
+		{
+			if (board[i][j] == ' ')
+			{
+				return 0;
+			}
+		}
+	}
+	return 1;
+}
+
+char IsWin(char board[ROW][COL], int row, int col)
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < row; ++i)                  // 同行
+	{
+		j = 0;
+		while (j < col)
+		{
+			if (board[i][0] == board[i][j])
+			{
+				j++;
+			}
+			else break;
+		}
+		if (j == col && board[i][0] != ' ')
+		{
+			return board[i][0];
+		}
+	}
+
+	for (j = 0; j < col; ++j)                          // 同列
+	{
+		i = 0;
+		while (i < row)
+		{
+			if (board[0][j] == board[i][j])
+			{
+				i++;
+			}
+			else break;
+		}
+		if (i == row && board[0][j] != ' ')
+		{
+			return board[0][j];
+		}
+	}
+
+	for (i = 0; i < row; ++i)                          // 主对角线
+	{
+		if (board[0][0] == board[i][i])
+		{
+			continue;
+		}
+		else break;
+	}
+	if (i == row && board[0][0] != ' ')
+	{
+		return board[0][0];
+	}
+
+	for (i = 0; i < row; ++i)                          // 副对角线
+	{
+		j = row - 1 - i;
+		if (board[0][row-1] == board[i][j])
+		{
+			continue;
+		}
+		else break;
+	}
+	if (i == row && board[0][row-1] != ' ')
+	{
+		return board[0][row-1];
+	}
+
+	if (IsFull(board, row, col) == 1)
+	{
+		return 'Q';
+	}
+	return 'C';
+}
