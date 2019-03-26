@@ -1,0 +1,41 @@
+// print di
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+//#define max_line 7
+int main()
+{
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	int max_line = 0;
+	printf("请输入菱形上三角层数：");
+	scanf("%d", &max_line);
+	for (i = 1; i <= max_line; ++i)   // 打印上三角
+	{
+		for (j = 1; j <= max_line - i; ++j)
+		{
+			printf(" ");
+		}
+		for (k = 1; k <= 2 * i - 1; ++k)
+		{
+			printf("*");
+		}
+		printf("\n");
+	}
+	for (i = 1; i < max_line; ++i)     // 打印下三角
+	{
+		for (k = 1; k <= i; ++k)
+		{
+			printf(" ");
+		}
+		for (j = 1; j <= 2 * (max_line - i) - 1; ++j)
+		{
+			printf("*");
+		}
+		printf("\n");
+	}
+	printf("\n");
+	system("pause");
+	return 0;
+}
