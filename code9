@@ -1,0 +1,44 @@
+//二维数组行中最大，列中最小的元素是鞍点。 
+//输出鞍点的坐标。 
+#include<stdio.h>
+int main()
+{
+	int i, j, max1, max2;
+	int s[3][4];
+	for (i = 0; i < 3; ++i)
+	{
+		for (j = 0; j < 4; ++j)
+		{
+			scanf("%d", &s[i][j]);
+		}
+	}
+	for (i = 0; i < 3; ++i)
+	{
+	    s[max1][max2] = s[i][0];
+		for (j = 0; j < 3; ++j)
+		{
+			if (s[max1][max2] < s[i][j + 1])
+			{
+				s[max1][max2] = s[i][j + 1];
+			}
+		}
+		// 找到该行max
+		for (i = 0; i < 3; ++i)
+		{
+			if (s[max1][max2] > s[i][max2])
+			{
+				break;
+			}
+		}
+		if (i >= 3)
+		{
+			printf("鞍点是s[%d][%d]\n", max1, max2);
+			break;
+		}
+	}
+	if (i >= 3 && j >= 4)
+	{
+		printf("没有鞍点\n");
+	}
+	return 0;
+}
