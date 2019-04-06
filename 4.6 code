@@ -1,0 +1,104 @@
+// 4.6
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+
+
+
+//int main()
+//{
+//	printf("请输入年份：");
+//	int year = 0;
+//	scanf("%d", &year);
+//	if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+//	{
+//		printf("%d是闰年。\n", year);
+//	}
+//	else printf("%d不是闰年。\n", year);
+//	system("pause");
+//	return 0;
+//}
+
+//int Is_Leapyear(int year)
+//{
+//	if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+//	{
+//		return 1;
+//	}
+//	else return 0;
+//}
+//
+//int main()
+//{
+//	int flag = 0;
+//	printf("请输入年份：");
+//	int year = 0;
+//	scanf("%d", &year);
+//	if (Is_Leapyear(year))
+//	{
+//		printf("是闰年\n");
+//	}
+//	else printf("不是闰年\n");
+//	system("pause");
+//	return 0;
+//}
+
+
+
+
+void init(int * a, int sz, int val)  // Initialization
+{
+	for (int i = 0; i < sz; ++i)
+	{
+		a[i] = val;
+	}
+}
+
+void empty(int * a, int sz)     // trash
+{
+	for (int i = 0; i < sz; ++i)
+	{
+		a[i] = 0;
+	}
+}
+
+void reverse(int * a, int sz)
+{
+	int start = 0;
+	int end = sz - 1;
+	while (start < end)
+	{
+		a[start] = a[start] ^ a[end];
+		a[end] = a[start] ^ a[end];
+		a[start] = a[start] ^ a[end];
+		start++;
+		end--;
+	}
+}
+
+void print(int * a, int sz)
+{
+	for (int i = 0; i < sz; ++i)
+	{
+		printf("%d ", a[i]);
+	}
+	printf("\n");
+}
+
+int main()
+{
+	int a[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	printf("array: ");
+	print(a, 10);
+	printf("reverse: ");
+	reverse(a, 10);
+	print(a, 10);
+	printf("initialization: ");
+	init(a, 10, 100);
+	print(a, 10);
+	printf("trash: ");
+	empty(a, 10);
+	print(a, 10);
+	system("pause");
+	return 0;
+}
