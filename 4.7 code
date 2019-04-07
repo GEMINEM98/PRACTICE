@@ -1,0 +1,18 @@
+// arrays and pointer
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	int a[5] = { 1,2,3,4,5 };
+	int* p = a;
+	printf("%d\n", *(5 + p)); //  same answer
+	printf("%d\n", a[5]);
+	printf("%d\n", *(a + 5));
+	printf("%d\n", *(5 + a));
+	printf("%d\n", 5[a]);
+	//printf("%d\n", [5]a);
+	system("pause");
+	return 0;
+}
