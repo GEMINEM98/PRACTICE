@@ -1,0 +1,78 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+
+// way_one：
+
+//int count_one_bits(unsigned int value)
+//{
+//	int count = 0;
+//	int i = 0;
+//	for (i = 0; i < 32; i++)
+//	{
+//		if (((value >> i)&1) == 1)
+//		{
+//			count++;
+//		}
+//	}
+//	return count;
+//}
+
+// way_two：
+
+//int count_one_bits(unsigned int value)
+//{
+//	int count = 0;
+//	while (value)
+//	{
+//		if (value % 2 == 1)
+//		{
+//			count++;
+//		}
+//		value /= 2;
+//	}
+//	return count;
+//}
+
+// way_three：
+
+//int count_one_bits(unsigned int value)
+//{
+//	int count = 0;
+//	for (int i = 1; i != 0; i = value)
+//	//for (int i = 1; i != 0; i <<= 1)
+//	{
+//		if (value & 1 == 1)
+//		{
+//			count++;
+//		}
+//		value >>= 1;
+//	}
+//	return count;
+//}
+
+// way_four：
+
+int count_one_bits(unsigned int value)
+{
+	int count = 0;
+	while (value)
+	{
+		value = value & (value - 1);
+		count++;
+	}
+	return count;
+}
+
+
+
+int main()
+{
+	int num = 0;
+	printf("请输入一个整数：");
+	scanf("%d", &num);
+	int ret = count_one_bits(num);
+	printf("二进制中有%d个1\n", ret);
+	system("pause");
+	return 0;
+}
