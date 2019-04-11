@@ -1,0 +1,136 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+
+//int global = 2019;
+//
+//int main()
+//{
+//	global = 2020;
+//	printf("global=%d\n", global);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+
+//
+//enum sex
+//{
+//	male,
+//	female,
+//	secret
+//};
+//int main()
+//{
+//	//enum sex s = male;
+//	3.14;
+//	1000;
+//	const float pai = 3.14f;
+//	pai = 5.14;   ----->error
+//	system("pause");
+//	return 0;
+//}
+
+
+
+
+
+//int main()
+//{
+//	char a[] = { "abcdef" };
+//	char b1[] = { 'a','b','c','d','e' };
+//	char b2[] = { 'a','b','c','d','e','\0' };
+//	printf("%s\n", a);
+//	printf("%s\n", b1);
+//	printf("%s\n", b2);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+
+
+//int main()
+//{
+//	printf("%c\n", '\'');
+//	//printf("%s\n", '\'');   error
+//	printf("%c\n", '\"');
+//	//printf("%s\n", '\"');   error
+//	//printf("%c\n", "\'");   error
+//	printf("%s\n", "\"");
+//	system("pause");
+//	return 0;
+//}
+
+
+
+
+
+//int main()
+//{
+//	int i = 0;
+//	int j = 0;
+//	scanf("%d %d", &i, &j);
+//	printf("%d / %d = %d\n", i, j, i / j);
+//
+//	system("pause");
+//	return 0;
+//}
+
+
+
+
+
+//typedef unsigned int uint_32;
+//int main()
+//{
+//	unsigned int num1 = 0;
+//	uint_32 num2 = 10;
+//	num1 = num2;
+//	system("pause");
+//	return 0;
+//}
+
+
+
+
+
+//#define SQUARE(x) x*x
+//#define SQUARED(x) ((x)*(x))
+//int main()
+//{
+//	printf("%d\n", SQUARE(2 + 1));  // 2+1*2+1=5
+//
+//	printf("%d\n", SQUARED(2 + 1)); // (2+1)*(2+1)=3*3=9
+//
+//	system("pause");
+//	return 0;
+//}
+
+
+
+
+
+//int main()
+//{
+//	int num = 10;
+//	printf("%p\n", &num);
+//	system("pause");
+//	return 0;
+//}
+
+
+
+
+int main()
+{
+	printf("%d\n", sizeof(char *));     // 4
+	printf("%d\n", sizeof(short *));    // 4
+	printf("%d\n", sizeof(int *));      // 4
+	printf("%d\n", sizeof(double *));   // 4
+	system("pause");
+	return 0;
+}
