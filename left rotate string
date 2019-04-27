@@ -1,0 +1,37 @@
+//实现一个函数，可以左旋字符串中的k个字符。
+//ABCD左旋一个字符得到BCDA
+//ABCD左旋两个字符得到CDAB
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+
+char * LeftRotate(char * a, int flag)
+{
+	for (int i = 0; i < flag; ++i) //  决定转换几个字符
+	{
+		int count = 1;
+		while (a[count])
+		{
+			char temp;
+			temp = a[count-1];
+			a[count - 1] = a[count];
+			a[count] = temp;
+			++count;
+		}
+	}
+	return a;
+}
+
+int main()
+{
+	char a[10];
+	int flag = 0;
+	printf("请输入一个字符串：");
+	scanf("%s", &a);
+	printf("请输入要左旋的字符个数：");
+	scanf("%d", &flag);
+	printf("左旋后：%s\n", LeftRotate(a, flag));
+	system("pause");
+	return 0;
+}
