@@ -1,0 +1,36 @@
+//喝汽水，1瓶汽水1元，2个空瓶可以换一瓶汽水， 
+//给20元，可以多少汽水。
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+#define DRINK 1
+#define BOTTLE 2
+
+int Count(int money)
+{
+	if (money != 0)
+	{
+		if (money != DRINK)
+		{
+			if (money % BOTTLE == 0)// 钱数为偶数
+			{
+				return money + Count(money / BOTTLE);
+			}
+			else // 钱数为奇数
+			{
+				return (money - 1) + Count((money / BOTTLE) + 1);
+			}
+		}
+		else return 1;
+	}
+	else return 0;
+}
+int main()
+{
+	int money = 0;
+	printf("请输入钱数：");
+	scanf("%d", &money);
+	printf("可以喝%d瓶汽水\n", Count(money));
+	system("pause");
+	return 0;
+}
