@@ -1,0 +1,60 @@
+// 模拟实现strcpy
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+#include<assert.h>
+#define M 100
+
+char * my_strcpy(char *dest, const char *src)
+{
+	assert(dest && src);
+	char *ret = dest;
+	while (*src != '\0')
+	{
+		*dest++ = *src++;
+	}
+	*dest = *src; // 最后的'\0'
+	return ret;
+}
+
+int main()
+{
+	char source[M];
+	char destination[M];
+	printf("请输入两个字符串：");
+	scanf("%s%s", &source, &destination);
+	printf("%s\n", my_strcpy(destination, source));
+	system("pause");
+	return 0;
+}
+
+
+// **************************************************
+
+// 模拟实现strcat
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+#include<assert.h>
+#define M 100
+
+char * my_strcat(char *dest, const char *src)
+{
+	assert(dest && src);
+	char *ret = dest;
+	while (*dest++);
+	--dest;          // 去掉dest中的'\0'
+	while (*dest++ = *src++);
+	return ret;
+}
+
+int main()
+{
+	char source[M];
+	char destination[M];
+	printf("请输入两个字符串：");
+	scanf("%s%s", &source, &destination);
+	printf("%s\n", my_strcat(destination, source));
+	system("pause");
+	return 0;
+}
