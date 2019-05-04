@@ -1,0 +1,63 @@
+// 判断一个字符串是否为另外一个字符串旋转之后的字符串。 
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int LeftRotate(char *a, char *b, int sz1)
+{
+	for (int flag = 0; flag <= sz1; ++flag) // 循环所有左旋情况
+	{
+		int count = 1;
+		while (a[count])
+		{
+			char temp;
+			temp = a[count - 1];
+			a[count - 1] = a[count];
+			a[count] = temp;
+			++count;
+		}
+		if (strcmp(a, b) == 0)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int RightRotate(char *a, char *b, int sz2)
+{
+	for (int flag = 0; flag <= sz2; ++flag) // 循环所有右旋情况
+	{
+		for (int j = sz2 - 1; j >= 0; --j)
+		{
+			char temp;
+			temp = a[j];
+			a[j] = a[j - 1];
+			a[j - 1] = temp;
+		}
+		if (strcmp(a, b) == 0)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int main()
+{
+	char a[100];
+	char b[100];
+	printf("请输入两个字符串：\n");
+	scanf("%s%s", &a, &b);
+	int sz1 = strlen(a);
+	int sz2 = strlen(b);
+	if ((LeftRotate(a, b, sz1)|| RightRotate(a, b, sz2)) == 1)
+	{
+		printf("1\n");
+	}
+	else printf("0\n");
+	system("pause");
+	return 0;
+}
