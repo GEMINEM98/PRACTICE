@@ -1,0 +1,25 @@
+// 模拟实现strcat(拼接)
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<assert.h>
+#include<stdlib.h>
+
+char* my_strcat(char* dest, const char* src)
+{
+	assert(dest&&src);
+	char* ret = dest;
+	while (*dest++);
+	--dest;
+	while (*dest++ = *src++);
+	return ret;
+}
+
+int main()
+{
+	char dest[100] = "ABCD";
+	char src[10] = "EFG";
+	my_strcat(dest, src);
+	printf("%s\n", dest);
+	system("pause");
+	return 0;
+}
