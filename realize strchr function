@@ -1,0 +1,29 @@
+// 模拟实现strchr
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<assert.h>
+#include<stdlib.h>
+
+char* my_strchr(const char* string, int c)
+{
+	assert(string);
+	while (*string)
+	{
+		if (*string == c)
+		{
+			return string;
+		}
+		++string;
+	}
+	return NULL;
+}
+
+int main()
+{
+	char string[10] = "123abcde";
+	int c = 'b';
+	char* ret = my_strchr(string, c);
+	printf("%s\n", ret);
+	system("pause");
+	return 0;
+}
