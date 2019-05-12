@@ -1,0 +1,29 @@
+// 模拟实现strcpy
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<assert.h>
+#include<stdlib.h>
+
+char* my_strcpy(char* dest, const char* src)
+{
+	assert(dest&&src);
+	char* ret = dest;
+	while (*dest++ = *src++)
+	{
+		;
+	}
+	return ret;
+}
+
+int main()
+{
+	char dest[100];
+	char src[100];
+	printf("请输入源字符串：");
+	scanf("%s", &src);
+	printf("请输入目标字符串：");
+	scanf("%s", &dest);
+	printf("目标字符串修改为：%s\n", my_strcpy(dest, src));
+	system("pause");
+	return 0;
+}
