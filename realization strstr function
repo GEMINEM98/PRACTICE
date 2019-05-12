@@ -1,0 +1,40 @@
+//模拟实现strstr
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<assert.h>
+#include<stdlib.h>
+
+char* my_strstr(const char* string, const char* strCharSet)
+{
+	assert(string&&strCharSet);
+	while (*string)
+	{
+		const char* p = string;
+		const char* q = strCharSet;
+		while ((*p == *q) && *q)
+		{
+			++p;
+			++q;
+		}
+		if (*q == '\0')
+		{
+			return string;
+		}
+		else
+		{
+			++string;
+		}
+	}
+	return NULL;
+}
+
+int main()
+{
+	char string[100] = "123abcd12345de6789123efg";
+	char strCharSet[100] = "12345d";
+	char* flag;
+	flag = my_strstr(string, strCharSet);
+	printf("%s\n", flag);
+	system("pause");
+	return 0;
+}
