@@ -1,0 +1,34 @@
+// 模拟实现strncpy（把src所指向的字符串中以src地址开始的前n个字节复制到dest所指的数组中，
+// 如果src不够n个，则追加'\0',并返回被复制后的dest。）
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<assert.h>
+#include<stdlib.h>
+
+char* my_strncpy(char* dest, const char* src, size_t num)
+{
+	assert(dest&&src);
+	char* ret = dest;
+	while (num && (*dest++ = *src++))
+	{
+		--num;
+	}
+	if (num > 0)
+	{
+		while (num--)
+		{
+			dest = NULL;
+		}
+	}
+	return ret;
+}
+
+int main()
+{
+	char dest[10] = "abcdefg";
+	char src[5] = "***";
+	my_strncpy(dest, src, 2 * sizeof(char));
+	printf("%s\n", dest);
+	system("pause");
+	return 0;
+}
