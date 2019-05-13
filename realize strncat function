@@ -1,0 +1,33 @@
+
+// 模拟实现strncat(把src中n个元素拼接到dest后，dest的\0被挪到拼接完成后)
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<assert.h>
+#include<stdlib.h>
+
+char* my_strncat(char* dest, const char* src, size_t num)
+{
+	assert(dest&&src);
+	char* ret = dest;
+	while (*dest)
+	{
+		++dest;
+	}
+	while (num-- && *src)
+	{
+		*dest++ = *src++;
+	}
+	*dest = '\0';
+	return ret;
+}
+
+int main()
+{
+	char dest[10] = "abcd";
+	char src[5] = "****";
+	my_strncat(dest, src, 2 * sizeof(char));
+	printf("%s\n", dest);
+
+	system("pause");
+	return 0;
+}
