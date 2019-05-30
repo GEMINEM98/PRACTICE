@@ -1,0 +1,80 @@
+// 实现转移表（计算器）
+void menu()
+{
+	printf("********************************************\n");
+	printf("**          1.add          2.sub          **\n");
+	printf("**          3.mul          4.div          **\n");
+	printf("********************************************\n");
+}
+
+int my_add(int a, int b)
+{
+	return a + b;
+}
+
+int my_sub(int a, int b)
+{
+	return a - b;
+}
+
+int my_mul(int a, int b)
+{
+	return a * b;
+}
+
+int my_div(int a, int b)
+{
+	return a / b;
+}
+
+int main()
+{
+	int select = 1;
+	int x = 0;
+	int y = 0;
+	int tmp = 0;
+	int flag = 0;
+	while (select)
+	{
+		menu();
+		printf("请选择功能选项：");
+		scanf("%d", &select);
+		switch (select)
+		{
+		case 1:
+			printf("请输入操作数：");
+			scanf("%d %d", &x, &y);
+			tmp = my_add(x, y);
+			flag = 1;
+			break;
+		case 2:
+			printf("请输入操作数：");
+			scanf("%d %d", &x, &y);
+			tmp = my_sub(x, y);
+			flag = 1;
+			break;
+		case 3:
+			printf("请输入操作数：");
+			scanf("%d %d", &x, &y);
+			tmp = my_mul(x, y);
+			flag = 1;
+			break;
+		case 4:
+			printf("请输入操作数：");
+			scanf("%d %d", &x, &y);
+			tmp = my_div(x, y);
+			flag = 1;
+			break;
+		default:
+			printf("输入错误！程序退出！\n");
+			flag = 0;
+			break;
+		}
+		if (flag)
+		{
+            printf("result = %d\n", tmp);
+		}
+	}
+	system("pause");
+	return 0;
+}
