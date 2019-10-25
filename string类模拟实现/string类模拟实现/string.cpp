@@ -176,9 +176,17 @@ namespace gly
 		void insert(size_t pos, char ch)
 		{
 			assert(pos <= _size);
+
 			if (_size == _capacity)
 			{
-				reserve(_capacity * 2); // 开空间
+				if (_capacity == 0) // 要处理特殊情况
+				{
+					reserve(8);
+				}
+				else
+				{
+					reserve(_capacity * 2);
+				}
 			}
 
 			int end = _size;  // 循环将元素都往后挪
@@ -361,7 +369,6 @@ namespace gly
 		}*/
 
 
-
 		friend ostream& operator<<(ostream& _cout, const string& s);
 		friend istream& operator>>(istream& _cin, string& s);
 		//friend istream& getline(istream& _cin, string& str, char ch);
@@ -387,7 +394,12 @@ namespace gly
 	}
 	istream& operator>>(istream& _cin, string& s)
 	{
-		_cin >> s._size;
+		char ch = _cin.get(); //先获取一个字符
+		while (ch != ' ' && ch != '\n')
+		{
+			s += ch;
+			ch = _cin.get();
+		}
 		return _cin;
 	}
 
@@ -406,10 +418,8 @@ namespace gly
 	//			break;
 	//		}
 	//	}
-	//	
 	//	return _cin;
 	//}
-
 }
 
 void test()
@@ -440,12 +450,28 @@ void test()
 	//cout << s3 << endl;
 	//cout << "****************" << endl;
 
-	
+}
+
+void test1()
+{
+	//gly::string s("hello");
+	//s += '\0';
+	//s += "world";
+	//cout << s.c_str() << endl;  // C形式的字符串遇到'\0'就停止
+	//cout << endl;
+	//cout << s << endl;          // string输出字符串是按照字符串的长度输出的
+
+	gly::string s;
+	cin >> s;
+	cout << s << endl;
+
+	return;
 }
 
 int main()
 {
-	test();
+	//test();
+	test1();
 	system("pause");
 	return 0;
 }
